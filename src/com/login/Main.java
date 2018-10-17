@@ -66,7 +66,6 @@ public class Main {
                         User user = new User(username,password,roleAdded);
                         users.add(user);
                     System.out.println(user.getId());
-                    System.out.println(user);
                         break;
                 case 2:
                     keyboard.nextLine();
@@ -94,10 +93,26 @@ public class Main {
                     System.out.println("Assigning role");
                     System.out.print("Enter user id here: ");
                     long idSearch = keyboard.nextLong();
+                    keyboard.nextLine();
                     User userFound = findUser(idSearch,users);
                     if(userFound!=null){
-                        System.out.println(userFound.getUsername());
-                        System.out.println(userFound.getRole());
+                        System.out.print(userFound.getUsername()+"->");
+                        for (Role eachRole:userFound.getRole()) {
+                            System.out.print(eachRole.getName()+" ");
+                        }
+                    }
+
+                    System.out.println("\nAssign role, type here: ");
+                    String assignRole = keyboard.nextLine();
+                    for (Role eachRole: userFound.getRole()) {
+                        if(userFound.getRole().contains(assignRole)){
+                            
+                        }
+                        if(eachRole.getName().equalsIgnoreCase(assignRole)){
+                            System.out.println("This role is already assigned to this user ");
+                        }
+                        userFound.getRole().add(new Role(assignRole));
+                        System.out.println("Role added");
                     }
                     break;  //optional
                 default:
