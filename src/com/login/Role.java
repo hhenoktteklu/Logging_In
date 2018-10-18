@@ -35,6 +35,9 @@ public class Role {
     public void setUser(List<User> user) {
         this.user = user;
     }
+    public void addRole(Role role){
+
+    }
 
     @Override
     public String toString() {

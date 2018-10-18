@@ -104,13 +104,16 @@ public class Main {
 
                     System.out.println("\nAssign role, type here: ");
                     String assignRole = keyboard.nextLine();
+                    boolean checkAssign = true;
+
                     for (Role eachRole: userFound.getRole()) {
-                        if(userFound.getRole().contains(assignRole)){
-                            
-                        }
+
                         if(eachRole.getName().equalsIgnoreCase(assignRole)){
                             System.out.println("This role is already assigned to this user ");
+                            checkAssign =false;
                         }
+                    }
+                    if(checkAssign) {
                         userFound.getRole().add(new Role(assignRole));
                         System.out.println("Role added");
                     }
